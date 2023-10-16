@@ -1,0 +1,49 @@
+
+server:
+  servlet:
+    context-path: /internal/doc-signing-service
+  error:
+    include-message: always
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+
+logging:
+  level:
+    org.springframework: ${LOGLEVEL_SPRING:INFO}
+    net.playground.documentsigningservice: ${LOGLEVEL_APPLICATION:INFO}
+
+keystore:
+  keystore-path: ${KEYSTORE_PATH}
+  keystore-pwd: ${KEYSTORE_PWD}
+  keypair-alias: ${KEYPAIR_ALIAS}
+  keypair-pwd: ${KEYPAIR_PWD}
+
+signature:
+  creator: ${SIGNATURE_CREATOR}
+  reason: ${SIGNATURE_REASON}
+  location: ${SIGNATURE_LOCATION}
+
+management:
+  health:
+    db:
+      enabled: false
+    ldap:
+      enabled: false
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+  server:
+    port: 809
+  prometheus:
+    metrics:
+      export:
+        enabled: true
