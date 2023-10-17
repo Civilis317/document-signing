@@ -75,7 +75,7 @@ public class SigningService {
             appearance.setReason(signatureConfig.getReason());
             appearance.setLocation(signatureConfig.getLocation());
 
-            appearance.setVisibleSignature(new Rectangle(300, 600, 400, 700), 1, "Signature");
+            appearance.setVisibleSignature(new Rectangle(800, 800, 800, 800), 1, "Signature");
 
             // Create the signature
             ExternalSignature externalSignature = new PrivateKeySignature(privateKey, DigestAlgorithms.SHA256, provider.getName());
